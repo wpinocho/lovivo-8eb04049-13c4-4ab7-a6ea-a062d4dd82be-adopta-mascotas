@@ -35,11 +35,11 @@ export const NewsletterSection = () => {
             ) : (
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <h3 className="text-2xl font-bold text-foreground">
-                    Want promotional emails?
+                  <h3 className="text-3xl font-bold text-foreground">
+                    Stay Updated on New Arrivals
                   </h3>
                   <p className="text-lg text-muted-foreground">
-                    Subscribe to our newsletter and get exclusive offers
+                    Be the first to know when new pets are ready for adoption
                   </p>
                 </div>
                 

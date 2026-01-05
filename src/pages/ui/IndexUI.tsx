@@ -35,24 +35,49 @@ export const IndexUI = ({ logic }: IndexUIProps) => {
       showCart={true}
     >
       {/* Hero Section */}
-      <section className="bg-background py-12 border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold text-foreground mb-4">
-            Discover Our Products
-          </h1>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Find the best products at the best price. Guaranteed quality and fast shipping.
-          </p>
+      <section className="relative py-20 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: 'url(/hero.jpg)' }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/60"></div>
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl">
+            <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
+              Find Your Perfect Companion
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8">
+              Every pet deserves a loving home. Adopt a furry friend today and experience unconditional love.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <a href="#collections">
+                <Button size="lg" className="rounded-full">
+                  Browse Pets
+                </Button>
+              </a>
+              <a href="#products">
+                <Button size="lg" variant="outline" className="rounded-full">
+                  Meet Them All
+                </Button>
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Collections Section */}
       {!loadingCollections && collections.length > 0 && (
-        <section id="collections" className="py-12 bg-muted/30">
+        <section id="collections" className="py-16 bg-muted/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-foreground mb-8">
-              Our Collections
-            </h2>
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-foreground mb-4">
+                Browse By Pet Type
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Whether you're a dog person or a cat lover, we have the perfect companion waiting for you.
+              </p>
+            </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {collections.map((collection) => (
@@ -68,21 +93,30 @@ export const IndexUI = ({ logic }: IndexUIProps) => {
       )}
 
       {/* Products Section */}
-      <section id="products" className="py-12">
+      <section id="products" className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-bold text-foreground">
-              {selectedCollectionId 
-                ? `Products from ${collections.find(c => c.id === selectedCollectionId)?.name || 'Collection'}` 
-                : 'Featured Products'
-              }
-            </h2>
+          <div className="flex items-center justify-between mb-12">
+            <div>
+              <h2 className="text-4xl font-bold text-foreground mb-2">
+                {selectedCollectionId 
+                  ? `${collections.find(c => c.id === selectedCollectionId)?.name || 'Pets'} Available for Adoption` 
+                  : 'Available Pets'
+                }
+              </h2>
+              <p className="text-muted-foreground">
+                {selectedCollectionId 
+                  ? 'These amazing pets are looking for their forever homes' 
+                  : 'All our wonderful pets ready to meet you'
+                }
+              </p>
+            </div>
             {selectedCollectionId && (
               <Button 
-                variant="outline" 
+                variant="outline"
+                className="rounded-full"
                 onClick={handleShowAllProducts}
               >
-                See All Products
+                See All Pets
               </Button>
             )}
           </div>
@@ -101,8 +135,8 @@ export const IndexUI = ({ logic }: IndexUIProps) => {
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-muted-foreground">
-                No products available.
+              <p className="text-lg text-muted-foreground">
+                No pets available at the moment. Check back soon!
               </p>
             </div>
           )}

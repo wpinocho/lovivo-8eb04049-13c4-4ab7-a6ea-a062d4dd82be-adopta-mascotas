@@ -4,11 +4,11 @@ export const BrandLogoLeft = () => {
       {/* TEMPLATE: Replace /logo.svg with your brand logo */}
       <img 
         src="/logo.svg" 
-        alt="Logo"
-        className="h-8 w-auto object-contain" 
+        alt="Paws & Hearts Adoption"
+        className="h-10 w-auto object-contain" 
         onError={(e) => {
           e.currentTarget.style.display = 'none';
-          e.currentTarget.parentElement!.innerHTML = '<span class="text-xl font-bold text-black">YourBrand</span>';
+          e.currentTarget.parentElement!.innerHTML = '<span class="text-2xl font-bold text-primary">🐾 Paws & Hearts</span>';
         }}
       />
     </a>
